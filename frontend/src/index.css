@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+
+#root {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.serif {
+  font-family: "Crimson Text", serif;
+}
