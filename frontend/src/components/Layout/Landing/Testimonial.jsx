@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
@@ -33,6 +33,14 @@ const getInitials = (name) => {
 
 const Testimonial = () => {
   const [index, setIndex] = useState(0);
+  const maxHeightRef = useRef(0);
+  const textRefs = useRef([]);
+
+  useEffect(() => {
+    const heights = textRefs.current.map((ref) => ref?.offsetHeight || 0);
+    maxHeightRef.current = Math.max(...heights);
+  }, []);
+
   const maxAvatars = 4;
   const remaining = testimonials.length - maxAvatars;
 
@@ -45,17 +53,16 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="container py-20 px-12 min-h-auto flex flex-col relative">
-      {/* Layout Wrapper */}
-      <div className="h-100 flex flex-col md:flex-row items-start justify-between">
-        {/* Left Section: Testimonial, Avatars, and Navigation */}
-        <div className="w-3/5 flex flex-col">
-          {/* Overlapping Avatar Group */}
+    <section className="container py-20 px-12 flex flex-col relative">
+      <div className="flex flex-col md:flex-row items-start justify-between">
+        <div
+          className="w-[53rem] flex flex-col"
+          style={{ minHeight: maxHeightRef.current }}
+        >
           <div className="flex flex-row justify-between items-center h-12">
-            {/* Overlapping Avatar Group */}
-            <div className="flex -space-x-2">
+            <div className="flex -space-x-6">
               <div
-                className="w-10 h-10 bg-blue-500 flex items-center justify-center rounded-full text-sm font-bold text-white border-2 border-white"
+                className="w-18.5 h-18.5 bg-blue-500 flex items-center justify-center rounded-full text-sm font-bold text-white border-2 border-white"
                 style={{ zIndex: maxAvatars }}
               >
                 {getInitials(testimonials[index].name)}
@@ -67,29 +74,28 @@ const Testimonial = () => {
               ].map((testimonial, i) => (
                 <div
                   key={i}
-                  className="w-10 h-10 bg-gray-300 flex items-center justify-center rounded-full text-sm font-bold text-gray-700 border-2 border-white"
+                  className="w-18.5 h-18.5 bg-gray-300 flex items-center justify-center rounded-full text-sm font-bold text-gray-700 border-2 border-white"
                   style={{ zIndex: maxAvatars - (i + 1) }}
                 >
                   {getInitials(testimonial.name)}
                 </div>
               ))}
               {(remaining > 0 || testimonials.length > maxAvatars) && (
-                <div className="w-10 h-10 bg-gray-400 flex items-center justify-center rounded-full text-sm font-bold text-white border-2 border-white">
+                <div className="w-18.5 h-18.5 bg-gray-400 flex items-center justify-center rounded-full text-sm font-bold text-white border-2 border-white">
                   +{Math.min(remaining, testimonials.length - maxAvatars + 1)}
                 </div>
               )}
             </div>
 
-            {/* Navigation Buttons */}
-            <div className="flex gap-4">
+            <div className="flex">
               <button
-                className="w-10 h-10 flex items-center justify-start hover:bg-gray-300 text-4xl text-neutral-500 font-bold"
+                className="w-18.5 h-18.5 flex items-center justify-center text-[32px] text-neutral-500 font-bold"
                 onClick={prevTestimonial}
               >
                 ←
               </button>
               <button
-                className="w-10 h-10 flex items-center justify-end hover:bg-gray-300 text-4xl text-neutral-500 font-bold"
+                className="w-18.5 h-18.5 flex items-center justify-center text-[32px] text-neutral-500 font-bold"
                 onClick={nextTestimonial}
               >
                 →
@@ -97,8 +103,11 @@ const Testimonial = () => {
             </div>
           </div>
 
-          {/* Testimonial Text */}
-          <p className="mt-10 mb-5 text-neutral-500 text-justify text-2xl italic font-semibold">
+          <p
+            ref={(el) => (textRefs.current[index] = el)}
+            className="mt-10 mb-5 text-neutral-500 text-justify text-2xl italic font-semibold"
+            style={{ minHeight: maxHeightRef.current }}
+          >
             "{testimonials[index].text}"
           </p>
           <p className="text-2xl text-neutral-500 font-semibold">
@@ -107,10 +116,9 @@ const Testimonial = () => {
           <p className="text-neutral-400 text-xl">Verified User</p>
         </div>
 
-        {/* Right Section: Heading */}
-        <div className="w-1/4 pt-20 flex flex-col justify-center text-right">
-          <h3 className="text-neutral-400 font-semibold">TESTIMONIALS</h3>
-          <h2 className="text-3xl font-bold">
+        <div className="w-[28rem] h-full flex flex-col self-center text-right">
+          <h3 className="mb-2 text-xl text-neutral-400 font-semibold">TESTIMONIALS</h3>
+          <h2 className="text-[3.25rem] font-bold">
             What our customers think about us
           </h2>
         </div>
