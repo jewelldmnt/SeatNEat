@@ -10,7 +10,7 @@ const Button = ({
 }) => {
   // Define size styles
   const sizeClasses = {
-    sm: "p-[0.62rem] h-[2.375rem] text-label-lg font-semibold",
+    sm: "p-[0.62rem] h-[2.375rem] text-base",
     md: "px-[1.75rem] py-[1.12rem] text-base",
     lg: "px-6 py-3 text-lg",
   };
