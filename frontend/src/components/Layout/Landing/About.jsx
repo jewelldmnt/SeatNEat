@@ -11,7 +11,9 @@ const About = () => {
     <section className="container py-20 min-h-auto flex flex-col">
       {/* How does it work */}
       <div className="px-12 flex flex-row items-center justify-between gap-12">
-        <h2 className="w-[20rem] text-3xl font-bold">How does it work?</h2>
+        <h2 className="w-[20rem] text-[3.25rem] font-bold">
+          How does it work?
+        </h2>
         <p className="w-2/3 text-xl text-neutral-600 text-justify">
           SeatN’Eat makes dining out effortless by allowing you to discover,
           book, and enjoy the best restaurants near you, all in just a few
