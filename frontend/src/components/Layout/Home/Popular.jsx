@@ -87,7 +87,9 @@ const Popular = () => {
         <div>
           <h2 className="text-2xl font-semibold">Popular Restaurants</h2>
           <span className="mt-2 text-neutral-500 block">
-            Discover a Variety of Flavors: Explore Restaurants by Cuisine
+            Diners’ Choice Awards are based on where your fellow diners book,
+            dine, and review. Only verified diners get to review restaurants on
+            SeatN’Eat, so our data doesn’t lie.
           </span>
         </div>
         {/* Navigation Buttons */}
