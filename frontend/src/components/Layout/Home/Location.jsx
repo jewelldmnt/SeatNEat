@@ -174,7 +174,7 @@ const Location = () => {
   const columns = splitIntoColumns(locations, 3);
 
   return (
-    <Box className="max-w-[1200px] mx-auto py-6">
+    <section className="container py-10 min-h-auto">
       <h2 variant="h4" gutterBottom className="text-xl font-bold">
         Explore Seat N' Eat
       </h2>
@@ -182,7 +182,7 @@ const Location = () => {
         Find the Best Dining Spots in Your City
       </span>
 
-      <Box className="grid grid-cols-3 gap-12 mt-4">
+      <Box className="grid grid-cols-3 gap-24 mt-4">
         {columns.map((column, colIndex) => (
           <Box key={colIndex} className="space-y-2">
             {column.map((loc, index) => (
@@ -219,7 +219,7 @@ const Location = () => {
                   <h3 className="text-neutral-900 font-semibold">{loc.name}</h3>
                 </AccordionSummary>
                 <AccordionDetails className="px-4 py-2 text-gray-600">
-                  <ul className="list-none pl-5 text-sm text-neutral-600">
+                  <ul className="list-none text-sm text-neutral-600">
                     <li className="pb-5 text-neutral-900">LANDMARKS</li>
                     {loc.landmarks.map((landmark, idx) => (
                       <li key={idx}>{landmark}</li>
@@ -231,7 +231,7 @@ const Location = () => {
           </Box>
         ))}
       </Box>
-    </Box>
+    </section>
   );
 };
 
