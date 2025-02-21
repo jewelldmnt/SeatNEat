@@ -175,10 +175,8 @@ const Location = () => {
 
   return (
     <section className="container py-10 min-h-auto">
-      <h2 variant="h4" gutterBottom className="text-xl font-bold">
-        Explore Seat N' Eat
-      </h2>
-      <span variant="subtitle1" className="text-gray-500">
+      <h2 className="text-2xl font-semibold">Explore Seat N' Eat</h2>
+      <span className="mt-2 text-neutral-500">
         Find the Best Dining Spots in Your City
       </span>
 
