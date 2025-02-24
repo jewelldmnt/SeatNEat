@@ -9,7 +9,7 @@ const RestaurantCard = ({
 }) => {
   return (
     <div
-      className=" bg-white shadow-lg rounded-[0.3125rem] border border-solid border-neutral-400 overflow-hidden flex flex-col"
+      className="bg-white shadow-lg rounded-[0.3125rem] border border-solid border-neutral-400 overflow-hidden flex flex-col"
       style={{ width, height }}
     >
       <div className="w-full" style={{ height: imageHeight }}>
@@ -41,7 +41,10 @@ const RestaurantCard = ({
             ))}
           </div>
         </div>
-        <div className="mt-3 flex flex-col-3 gap-2 flex-wrap">
+
+        {/* Pushes the available times to the bottom */}
+        <div className="flex-grow"></div>
+        <div className="mt-3 flex flex-wrap gap-2">
           {restaurant.availableTimes.map((time, index) => (
             <span
               key={index}
