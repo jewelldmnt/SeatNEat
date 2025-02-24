@@ -3,8 +3,8 @@ import Button from "../UI/Button";
 
 const Navbar = () => {
   return (
-    <div className="bg-primary">
-      <nav className="container flex justify-between items-center h-[4rem] w-full">
+    <nav className="fixed top-0 left-0 right-0 z-50 h-[4rem] w-full bg-primary shadow-md">
+      <div className="container flex justify-between items-center w-ful h-full">
         {/* Logo */}
         <div className="flex items-center">
           <svg
@@ -51,8 +51,8 @@ const Navbar = () => {
             Sign Up
           </Button>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 

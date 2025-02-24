@@ -7,7 +7,7 @@ import FAQs from "../components/Layout/Landing/FAQs";
 
 const Landing = () => {
   return (
-    <div>
+    <div className="pt-[4rem] min-h-[calc(100vh-4rem)]">
       <Hero />
       <Feature />
       <About />
