@@ -1,8 +1,5 @@
-import React, { useRef } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import React from "react";
+import Carousel from "../../UI/Carousel";
 
 const deals = [
   {
@@ -38,24 +35,6 @@ const deals = [
 ];
 
 const Deals = () => {
-  const sliderRef = useRef(null);
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
-
   return (
     <section className="container py-10 min-h-auto">
       <div className="flex justify-between items-center">
@@ -68,38 +47,25 @@ const Deals = () => {
             specials, and exclusive perks
           </span>
         </div>
-        {/* Navigation Buttons */}
-        <div className="flex gap-2">
-          <button
-            onClick={() => sliderRef.current.slickPrev()}
-            className="rounded-full hover:text-neutral-400"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={() => sliderRef.current.slickNext()}
-            className="rounded-full hover:text-neutral-400"
-          >
-            <ChevronRight size={20} />
-          </button>
-        </div>
       </div>
 
-      {/* Carousel */}
-      <Slider ref={sliderRef} {...settings} className="mt-6">
-        {deals.map((deal) => (
-          <div
-            key={deal.id}
-            className="w-[32.5rem] h-[14.375rem] px-4 flex justify-center items-center overflow-hidden"
-          >
-            <img
-              src={deal.image}
-              alt={deal.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
-      </Slider>
+      {/* Carousel Component */}
+      <div className="mt-6">
+        <Carousel
+          data={deals}
+          slidesToShow={3}
+          slidesToScroll={1}
+          renderItem={(deal) => (
+            <div className="w-[32.5rem] h-[14.375rem] px-4 flex justify-center items-center overflow-hidden">
+              <img
+                src={deal.image}
+                alt={deal.name}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+        />
+      </div>
     </section>
   );
 };
