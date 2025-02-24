@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserLayout from "./components/Layout/UserLayout";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
+import CategoryListing from "./pages/CategoryListing";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Route path="/" element={<UserLayout />}>
           <Route index element={<Landing />} />
           <Route path="/home" index element={<Home />} />
+          <Route path="/category" index element={<CategoryListing />} />
           {/* User Layout */}
         </Route>
         <Route>{/* Admin Layout */}</Route>
