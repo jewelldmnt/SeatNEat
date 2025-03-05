@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import RestaurantCard from "../../UI/RestaurantCard";
 import Filter from "../../UI/Filter";
 import Pagination from "@mui/material/Pagination";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 const restaurants = [
   {
@@ -91,6 +95,31 @@ const restaurantsPerPage = 6;
 
 const Listing = () => {
   const [page, setPage] = useState(1);
+  const breadcrumbs = [
+    <Link
+      key="home-breadcrumb" 
+      underline="hover"
+      sx={{
+        color: "#6B7280",
+        fontSize: "1.25rem",
+        fontWeight: 600,
+        fontFamily: "Montserrat",
+      }}
+    >
+      Home
+    </Link>,
+    <Typography
+      key="category-breadcrumb" 
+      sx={{
+        color: "#374151",
+        fontSize: "1.25rem",
+        fontWeight: 600,
+        fontFamily: "Montserrat",
+      }}
+    >
+      Category
+    </Typography>,
+  ];
 
   // Calculate the index range for pagination
   const startIndex = (page - 1) * restaurantsPerPage;
@@ -109,7 +138,12 @@ const Listing = () => {
 
         {/* Main Content (Restaurant Grid + Pagination) */}
         <div className="w-3/4 flex flex-col h-full">
-          <h2 className="text-2xl font-semibold">Restaurants</h2>
+          <Breadcrumbs
+            separator={<NavigateNextIcon fontSize="small" />}
+            aria-label="breadcrumb"
+          >
+            {breadcrumbs}
+          </Breadcrumbs>
           <div className="my-6 w-full flex flex-row justify-between">
             <span className="text-xl font-semibold text-neutral-700">
               {restaurants.length} Restaurants found
@@ -138,7 +172,6 @@ const Listing = () => {
           </div>
         </div>
       </div>
-
     </section>
   );
 };
