@@ -4,6 +4,7 @@ import UserLayout from "./components/Layout/UserLayout";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import CategoryListing from "./pages/CategoryListing";
+import Auth from "./components/Layout/Auth";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/category" index element={<CategoryListing />} />
           {/* User Layout */}
         </Route>
+        <Route path="/auth" element={<Auth />}></Route>
         <Route>{/* Admin Layout */}</Route>
       </Routes>
     </BrowserRouter>
