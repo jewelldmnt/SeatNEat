@@ -5,18 +5,21 @@ import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import CategoryListing from "./pages/CategoryListing";
 import Auth from "./components/Layout/Auth";
+import RestaurantDetail from "./pages/RestaurantDetail";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* User Authentication */}
+        <Route path="/auth" element={<Auth />}></Route>
+        {/* User Layout */}
         <Route path="/" element={<UserLayout />}>
           <Route index element={<Landing />} />
           <Route path="/home" index element={<Home />} />
           <Route path="/category" index element={<CategoryListing />} />
-          {/* User Layout */}
+          <Route path="/restaurant" index element={<RestaurantDetail />} />
         </Route>
-        <Route path="/auth" element={<Auth />}></Route>
         <Route>{/* Admin Layout */}</Route>
       </Routes>
     </BrowserRouter>
