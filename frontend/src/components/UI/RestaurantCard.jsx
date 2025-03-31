@@ -1,5 +1,6 @@
 import React from "react";
 import { Star } from "lucide-react";
+import StarRating from "./StarRating";
 
 const RestaurantCard = ({
   restaurant,
@@ -31,18 +32,7 @@ const RestaurantCard = ({
             <span className="font-semibold text-sm text-neutral-400">
               ({restaurant.reservations} reservations)
             </span>
-            <div className="flex flex-row">
-              {Array.from({ length: 5 }, (_, index) => (
-                <Star
-                  key={index}
-                  size={20}
-                  fill={
-                    index < Math.round(restaurant.rating) ? "#4b5563" : "gray"
-                  }
-                  stroke="none"
-                />
-              ))}
-            </div>
+            <StarRating rating={restaurant.rating} />
           </div>
           <div className="mt-3 flex flex-wrap gap-2">
             {restaurant.availableTimes.map((time, index) => (
