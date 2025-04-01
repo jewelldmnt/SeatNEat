@@ -2,12 +2,37 @@ import React, { useState } from "react";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
+import { createClient } from "@supabase/supabase-js";
 
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
+export { supabase };
 const Auth = () => {
   const [isSignIn, setIsSignIn] = useState(true);
 
   const toggleForm = () => {
     setIsSignIn(!isSignIn);
+  };
+  const signInWithGoogle = async () => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: `${window.location.origin}/home`, // Ensure full URL for redirection
+          queryParams: {
+            prompt: "select_account", // Forces Google to prompt for account selection
+          },
+        },
+      });
+
+      if (error) {
+        console.error("Google Sign-In Error:", error.message);
+      }
+    } catch (err) {
+      console.error("Unexpected Error:", err);
+    }
   };
 
   return (
@@ -69,9 +94,11 @@ const Auth = () => {
             </div>
             {/* Social Login Buttons */}
             <Button
+              type="button"
               variant="outlined"
               size="md"
               className="text-sm font-medium w-full flex items-center justify-center space-x-3"
+              onClick={signInWithGoogle}
             >
               <FaGoogle className="text-lg" />
               <span>Continue with Google</span>
@@ -114,9 +141,11 @@ const Auth = () => {
           <form className="space-y-6">
             {/* Social Login Buttons */}
             <Button
+              type="button"
               variant="outlined"
               size="md"
               className="text-sm font-medium w-full flex items-center justify-center space-x-3"
+              onClick={signInWithGoogle}
             >
               <FaGoogle className="text-lg" />
               <span>Continue with Google</span>
