@@ -105,7 +105,7 @@ const Testimonial = () => {
 
           <p
             ref={(el) => (textRefs.current[index] = el)}
-            className="mt-10 mb-5 text-neutral-500 text-justify text-2xl italic font-semibold"
+            className="mt-10 mb-5 text-neutral-500 text-justify text-xl italic font-semibold"
             style={{ minHeight: maxHeightRef.current }}
           >
             "{testimonials[index].text}"
@@ -118,7 +118,7 @@ const Testimonial = () => {
 
         <div className="w-[28rem] h-full flex flex-col self-center text-right">
           <h3 className="mb-2 text-xl text-neutral-400 font-semibold">TESTIMONIALS</h3>
-          <h2 className="text-[3.25rem] font-bold">
+          <h2 className="text-[2.75rem] font-bold">
             What our customers think about us
           </h2>
         </div>

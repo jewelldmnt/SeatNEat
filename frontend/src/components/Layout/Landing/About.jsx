@@ -11,7 +11,7 @@ const About = () => {
     <section className="container py-20 min-h-auto flex flex-col">
       {/* How does it work */}
       <div className="px-12 flex flex-row items-center justify-between gap-12">
-        <h2 className="w-[20rem] text-[3.25rem] font-bold">
+        <h2 className="w-[20rem] text-[2.75rem] font-bold">
           How does it work?
         </h2>
         <p className="w-2/3 text-xl text-neutral-600 text-justify">
